@@ -81,8 +81,13 @@ public class Main {
         double desiredGrade = keyboard.nextDouble();
         double currentGrade = average.getCurrentAverage(average.getMarks(), average.getWeights());
         System.out.println("Current Grade = " + currentGrade);
+        if(currentGrade > desiredGrade){
+            System.out.println("Your current grade is above your desired grade!");
+            System.out.println("You will pass the class even if you get 0% on the final!");
+        }
         double currentWeightTotal = average.getTotalWeights(average.getWeights());
         double finalMark = (desiredGrade * 100 - currentGrade * currentWeightTotal) / (100 - currentGrade);
+        if (finalMark < 0) finalMark = 0;
         System.out.println("You need " + finalMark + "% to get " + desiredGrade + "%.");
         goBack(average);
     }
