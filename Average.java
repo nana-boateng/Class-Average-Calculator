@@ -7,12 +7,12 @@ class Average {
     private ArrayList<Double> weights = new ArrayList<>(1);
 
 
-    Average(){
+    Average() {
 
     }
 
-    void setMarks(double num) throws IllegalAverage{
-        if (num < 0){
+    void setMarks(double num) throws IllegalAverage {
+        if (num < 0) {
             throw new IllegalAverage("Invalid mark");
         } else {
             marks.add(num);
@@ -26,36 +26,42 @@ class Average {
         System.out.print("Enter percentage weight: ");
         double num = keyboard.nextDouble();
         System.out.println(" ");
-        for(double element: weights){
+        for (double element : weights) {
             sum += element;
         }
-        if (sum+num > 100){
+        if (sum + num > 100) {
             throw new IllegalAverage("Weight sum greater than 100");
         } else {
             weights.add(num);
         }
     }
-    void removeMark(int index){
+
+    void removeMark(int index) {
         marks.remove(index);
         weights.remove(index);
     }
 
-    ArrayList<Double> getMarks(){ return marks; }
-    ArrayList<Double> getWeights(){ return weights; }
+    ArrayList<Double> getMarks() {
+        return marks;
+    }
 
-    double getCurrentAverage(ArrayList<Double> marks, ArrayList<Double> weights) throws IllegalAverage{
+    ArrayList<Double> getWeights() {
+        return weights;
+    }
+
+    double getCurrentAverage(ArrayList<Double> marks, ArrayList<Double> weights) throws IllegalAverage {
         double sum = 0;
-        if (marks.size() != weights.size()){
+        if (marks.size() != weights.size()) {
             throw new IllegalAverage("Marks dont match up with weights");
         } else {
             for (int i = 0; i < marks.size(); i++) {
                 sum += marks.get(i) * weights.get(i);
             }
         }
-        return sum/getTotalWeights(weights);
+        return sum / getTotalWeights(weights);
     }
 
-    double getTotalWeights(ArrayList<Double> weights){
+    double getTotalWeights(ArrayList<Double> weights) {
         double sum = 0;
         for (Double weight : weights) {
             sum += weight;
