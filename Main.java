@@ -17,7 +17,7 @@ public class Main {
         System.out.print("Enter option: ");
         int choice = keyboard.nextInt();
         System.out.println();
-        switch(choice){
+        switch (choice) {
             case 1:
                 addMark(average);
             case 2:
@@ -39,10 +39,10 @@ public class Main {
         int num = keyboard.nextInt();
         average.setMarks(num);
         boolean check = true;
-        while (check){
+        while (check) {
             System.out.print("1. Enter new assignment\n2. Save and go back to the Main Menu\nEnter option: ");
             int choice = keyboard.nextInt();
-            if (choice == 2){
+            if (choice == 2) {
                 check = false;
             } else if (choice == 1) {
                 System.out.print("\nEnter percentage mark: ");
@@ -66,23 +66,23 @@ public class Main {
         goBack(average);
     }
 
-    private static void viewMarks(Average average){
+    private static void viewMarks(Average average) {
         ArrayList<Double> marks = average.getMarks();
         ArrayList<Double> weights = average.getWeights();
         System.out.println("Assignment #\tMark\tWeight");
-        for (int i = 0; i < marks.size(); i++){
-            System.out.println("Assignment " + (i+1) + "\t" + marks.get(i) + "%\t" + weights.get(i) + "%");
+        for (int i = 0; i < marks.size(); i++) {
+            System.out.println("Assignment " + (i + 1) + "\t" + marks.get(i) + "%\t" + weights.get(i) + "%");
         }
     }
 
-    private static void calculateAvg(Average average) throws IllegalAverage{
+    private static void calculateAvg(Average average) throws IllegalAverage {
         Scanner keyboard = new Scanner(System.in);
         System.out.print("What's the passing grade for this class: ");
         double desiredGrade = keyboard.nextDouble();
         double currentGrade = average.getCurrentAverage(average.getMarks(), average.getWeights());
         System.out.println("Current Grade = " + currentGrade);
         double currentWeightTotal = average.getTotalWeights(average.getWeights());
-        double finalMark = (desiredGrade*100 - currentGrade*currentWeightTotal)/(100-currentGrade);
+        double finalMark = (desiredGrade * 100 - currentGrade * currentWeightTotal) / (100 - currentGrade);
         System.out.println("You need " + finalMark + "% to get " + desiredGrade + "%.");
         goBack(average);
     }
