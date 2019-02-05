@@ -1,6 +1,6 @@
 class IllegalAverage extends Exception {
 
-    IllegalAverage(String message){
+    IllegalAverage(String message) {
         super(message);
     }
 
